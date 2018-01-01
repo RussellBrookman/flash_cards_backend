@@ -1,0 +1,23 @@
+{
+  "name": "flash_cards_backend",
+  "version": "1.0.0",
+  "description": "\"flash_card_example\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RussellBrookman/flash_cards_backend.git"
+  },
+  "author": "Russell_Brookman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RussellBrookman/flash_cards_backend/issues"
+  },
+  "homepage": "https://github.com/RussellBrookman/flash_cards_backend#readme",
+  "dependencies": {
+    "inquirer": "^4.0.1",
+    "prompt": "^1.0.0"
+  }
+}
