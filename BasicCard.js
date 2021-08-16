@@ -1,10 +1,6 @@
-function BasicCard(front, back) {
-  if (this instanceof BasicCard) {
-    this.front = front;
-    this.back = back;
-  } else {
-    return new BasicCard(front, back);
-  }
-}
+let BasicCard = function(front, back) {
+	this.front = front;
+	this.back = back;
+};
 
 module.exports = BasicCard;

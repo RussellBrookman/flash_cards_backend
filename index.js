@@ -2,61 +2,43 @@ var BasicCard = require('./BasicCard.js');
 var inquirer = require("inquirer");
 var prompt = require('prompt');
 
-var metroid = new BasicCard("Which game had the first female hero?", "metroid");
-var simonsQuest = new BasicCard("What was considered to be the first, side view, RPG platformer?", "simons quest");
-var ys = new BasicCard("What is the first RPG to have voice actors", "ys");
-var wolfenstein = new BasicCard("What was the first, first person shooter?", "wolfenstein3d");
+var q1 = new BasicCard("Which game had the first female hero?", "metroid");
+var q2 = new BasicCard("What was considered to be the first, side view, RPG platformer?", "simons quest");
+var q3 = new BasicCard("What is the first RPG to have voice actors", "ys");
+var q4 = new BasicCard("What classic RPG is named after a female and staring a male protagonist", "zelda");
 
-function q1 () {
-var question1 = prompt.get([metroid.front], function (err, result) {
-  var answer = process.argv.slice(2);
-  console.log(answer);
-  if (answer === metroid.back) {
-    console.log("You're correct. it was " + metroid.back);
-  } else {
-    console.log("Wrong: If you spent less time with girls and more time playing video games we wouldn't be having these embarrassing situations.");
-  }
-  q2();
-});
-}
+let count = 0;
+let cards = [];
+let correct = 0;
 
-function q2 () {
-var question2 = prompt.get([simonsQuest.front], function (err, result) {
-  var answer = process.argv.slice(2);
-  console.log(answer);
-  if (answer === simonsQuest.back) {
-    console.log("You're correct. it was " + simonsQuest.back);
-  } else {
-    console.log("Wrong: Common man.. Did you even own an Nintendo?");
-  }
-  q3();
-});
-}
+cards.push(q1);
+cards.push(q2);
+cards.push(q3);
+cards.push(q4);
 
-function q3 () {
-  var question3 = prompt.get([ys.front], function (err, result) {
-    var answer = process.argv.slice(2);
-    console.log(answer);
-    if (answer === ys.back) {
-      console.log("You're correct. it was " + ys.back);
-    } else {
-      console.log("Wrong: This was a hard one but a totally classic game.. if you're into that sort of thing.");
+let questions = function() {
+  if (count < cards.length) {
+    inquirer.prompt([
+    {
+      name: "QandA",
+      type: "input",
+      message: cards[count].front
     }
-    q4();
-  });
-  }
+    ]).then(function(ans) {
+      if (ans.QandA == cards[count].back) {
+        console.log("You're correct. it was " + cards[count].back);
+        count++;
+        correct++;
+        questions();
+      } else {
+        console.log("You're wrong. If you spent more time playing video games, and less time being popular, we can avoid these embarrassing situations.")
+        count++;
+        questions();
+      }
+    })
+  } else {
+    console.log("You got " + correct + " right. Thank you for playing.");
+  };
+};
 
-function q4 () {
-  var question4 = prompt.get([wolfenstein.front], function (err, result) {
-    var answer = process.argv.slice(2);
-    console.log(answer);
-    if (answer === wolfenstein.back) {
-      console.log("You're correct. it was " + wolfenstein.back);
-    } else {
-      console.log("Wrong: This one was pretty easy. Maybe this gaming quiz isn't for you.");
-    }
-    // answersAll();
-  });
-  }
-
-q1();
+questions();

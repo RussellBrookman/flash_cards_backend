@@ -1,9 +1,24 @@
 # flash_cards_backend
 
-node js
+A basic question and answer informaton checker which will ask you questions and check if your answer is correct. This Command Line Interface (CLI) was created with simple and common node.js plugins. It allows for a fast and easy way to create website mockup examples with greater functionality. 
 
-go to the command line
+	
+# Prerequisites
 
-if you have node installed on your machine then cd into this file
+* node.js
 
-command to start: index.js
+
+# Dependencies
+
+* inquirer
+* process.argv
+* prompt
+
+
+# Command line Directions:
+
+1. cd into this file
+
+2. npm install
+
+3. node "index.js"
